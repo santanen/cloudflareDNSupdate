@@ -1,6 +1,6 @@
 <?php
 
-include("config.php"); // get auth and domain data
+include(dirname(__FILE__) . "/config.php"); // get auth and domain data
 
 function getPublicIP() {
   $ip_json = json_decode(file_get_contents("https://api.ipify.org/?format=json"), true);

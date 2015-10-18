@@ -1,8 +1,7 @@
 <?php
 
-include("config.php"); // get auth and domain data
-include("cf_functions.php");
-include("jsonformat.php");
+include(dirname(__FILE__) . "/config.php"); // get auth and domain data
+include(dirname(__FILE__) . "/cf_functions.php");
 
 $publicIP = getPublicIP();
 if ($publicIP != null)
