@@ -4,10 +4,8 @@ include(dirname(__FILE__) . "/config.php"); // get auth and domain data
 include(dirname(__FILE__) . "/cf_functions.php");
 
 $publicIP = getPublicIP();
-if ($publicIP != null)
-  echo ("\nThis server's current public IP is: " . $publicIP . "\n");
-else {
-  echo "\nCould not retrieve public IP. Exiting...\n";
+if ($publicIP == null) {
+  fwrite(STDERR, "\nCould not retrieve public IP. Exiting...\n");
   exit;
 }
 
@@ -17,10 +15,9 @@ foreach ($config_domains as $domain) {
   $domainData = cfGetDomainData($domain);
 
   if ($domainData["result"] != "success") {
-    echo ("\nFailed to get domain data. Exiting....\n");
+    fwrite(STDERR, "\nFailed to get domain data. Exiting....\n");
     exit;
   }
-
   // loop through DNS records to retrieve A-record
   foreach ($domainData["response"]["recs"]["objs"] as $entry) {
     if ( $entry["type"] == "A" ) {
@@ -31,24 +28,14 @@ foreach ($config_domains as $domain) {
     }
   }
 
-  // printf(json_format($output));
-  // print_r($domainData);
-  echo ("\n" . $domain . ":");
-  echo ("\n\tIP: " . $cf_ip);
-  echo ("\n\tRec_id: " . $cf_recid);
-
-  echo ("\n\tAction needed: ");
-  if ($publicIP == $cf_ip)
-    echo ("none\n");
-  else {
-    echo ("updating... ");
+  if ($publicIP != $cf_ip) {
     $updateResult = setDomainARecord($domain, $cf_recid, $publicIP, $cf_name);
     if ($updateResult["result"] != "success") {
-      echo ("failed to update domain data. Exiting....\n");
+      fwrite (STDERR, "Failed to update domain data (" . $domain . " " . $cf_redic . " " . $publicIP . "). Exiting....\n");
       exit;
     }
     else {
-      echo ("done!\n");
+      fwrite (STDOUT, "Updated domain data (" . $domain . " " . $cf_redic . " " . $publicIP . ").\n");
     }
   }
 }
