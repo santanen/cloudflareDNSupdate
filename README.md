@@ -11,4 +11,4 @@ Copy config.php.sample to config.php and enter your
 * cloudflare email address
 * domain names, which need to be updated
  
-
+Run `php cloudflare.php` and see what happens :)
