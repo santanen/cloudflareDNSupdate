@@ -1,0 +1,16 @@
+<?php
+
+$cfUrl = "https://www.cloudflare.com/api_json.html";
+
+$config_auth = array(
+  'tkn' => "[your token goes here]",
+  'email' => "[your cloudflare email goes here]"
+);
+
+$config_domains = array(
+  "www.example.com",
+  "www.example.org",
+  "chat.example.org"
+);
+
+?>
