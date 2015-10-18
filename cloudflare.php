@@ -1,9 +1,10 @@
 <?php
 
+include("config.php"); // get auth and domain data
 include("jsonformat.php");
 
 $ch = curl_init();
-curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_URL, "https://www.cloudflare.com/api_json.html");
 curl_setopt($ch, CURLOPT_POST, true);
 
