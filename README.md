@@ -7,8 +7,8 @@ Requires: **php5-cli, php5-curl**
 
 Copy config.php.sample to config.php and enter your 
 
-*a) cloudflare token
-*b) cloudflare email address
-*c) domain names, which need to be updated
-
+* cloudflare token
+* cloudflare email address
+* domain names, which need to be updated
+ 
 
