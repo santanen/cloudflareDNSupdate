@@ -1,0 +1,9 @@
+<?php
+
+curl https://www.cloudflare.com/api_json.html \
+  -d 'a=zone_load_multi' \
+  -d 'tkn=d87a9d00adb5af035cece0adddd023a6e6db3' \
+  -d 'email=markus@santmark.fi'
+
+?>
+
