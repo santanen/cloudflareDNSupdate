@@ -1,4 +1,13 @@
 <?php
+/**
+ * cloudflareDNSupdate
+ * cloudflare.php
+ *
+ * @author Markus <markus@santmark.fi>
+ * @copyright Markus 2015
+ * @version 1.0
+ * @license GPL
+ */
 
 include(dirname(__FILE__) . "/config.php"); // get auth and domain data
 include(dirname(__FILE__) . "/cf_functions.php");
