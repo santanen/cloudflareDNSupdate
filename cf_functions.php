@@ -2,7 +2,7 @@
 
 include(dirname(__FILE__) . "/config.php"); // get auth and domain data
 
-function getPublicIP() {
+function cfGetPublicIP() {
   $ip_json = json_decode(file_get_contents("https://api.ipify.org/?format=json"), true);
 
   if ($ip_json != null  && !filter_var($ip_json["ip"], FILTER_VALIDATE_IP) === false)
@@ -25,7 +25,7 @@ function cfGetDomainData($domain) {
   return httpPost($data);
 }
 
-function setDomainARecord($domain, $recid, $ip, $name) {
+function cfSetDomainARecord($domain, $recid, $ip, $name) {
 
   global $config_auth;
 
